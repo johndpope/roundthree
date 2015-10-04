@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect
 import twilio.twiml
+from Node import Node
  
 app = Flask(__name__)
 
@@ -24,7 +25,7 @@ def hello_monkey():
     if (curr_node == start_node):
     	resp.message("Welcome to #thecloud. If you have not done so already, please call emergency services. Are you safe and able to assist? (y/n)")
     	curr_node = air_node
-    else if (curr_node == air_node):
+    elif (curr_node == air_node):
     	resp.message(air_node.get_message())
 
     return str(resp)
