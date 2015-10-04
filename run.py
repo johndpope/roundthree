@@ -24,9 +24,8 @@ def hello_monkey():
     if (request.form['From'] in curr_nodes):
         answer = request.form['Body'].lower()
         if (answer in ["y", "n" "1", "2", "3", "4", "5"]):
-            print(curr_nodes[request.form['From']].is_end_node)
-            if(not curr_nodes[request.form['From']].is_end_node):
-                print("in not end node")
+            # print(curr_nodes[request.form['From']].is_end_node())
+            if(not curr_nodes[request.form['From']].is_end_node()):
                 curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node(answer)
         if (curr_nodes[request.form['From']] in vitals_nodes):
             curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node("next")
