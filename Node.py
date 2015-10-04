@@ -1,5 +1,7 @@
 class Node:
 
+    is_end_node = False
+
     def __init__(self, message):
         self.message = message
         self.responses = {}
@@ -15,3 +17,9 @@ class Node:
             return self.responses[input]
         else:
             return None
+
+    def is_end_node(self):
+        return self.is_end_node
+
+    def set_is_end_node(self, is_end_node):
+        self.is_end_node = is_end_node
