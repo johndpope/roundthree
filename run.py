@@ -24,7 +24,6 @@ def hello_monkey():
     if (request.form['From'] in curr_nodes):
         answer = request.form['Body'].lower()
         if (answer in ["y", "n" "1", "2", "3", "4", "5"]):
-            print(curr_nodes[request.form['From']].is_end_node())
             if(not curr_nodes[request.form['From']].is_end_node()):
                 curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node(answer)
         if (curr_nodes[request.form['From']] in vitals_nodes):
@@ -42,7 +41,7 @@ if __name__ == "__main__":
 
     start_node = Node("Welcome to Cavalry. If you have not done so already, please call emergency services. Are you able to safely assist your patient? (y/n)")
     leave_node = Node("Please get to a place where you feel safe and do not attempt to administer care.")
-    conscious_node = Node("Is your patient visibily conscious? (y/n)")
+    # conscious_node = Node("Is your patient visibily conscious? (y/n)")
 
     air_node = Node("Look in your patient's mouth. Are there any obstructions? If there are, remove it if possible. Is the airway now open? (y/n)")
     heimlich_node = Node("Perform the Heimlich maneuver: Get behind your patient. Place your fist with your thumb in and facing their belly button. Grasping your fist with your other hand, make quick, upward and inward thrusts with your fist. Has the object been dislodged? (y/n)")
@@ -64,9 +63,10 @@ if __name__ == "__main__":
     vitals_purgatory_node = Node("You have taken a full set of vitals. Do you wish to take another (recommended every 5-10 minutes)? (y/n)")
 
 
-    start_node.add_response("y", conscious_node)
+    start_node.add_response("y", air_node)
     start_node.add_response("n", leave_node)
     leave_node.set_is_end_node(True)
+
     air_node.add_response("y", breathing_node)
     air_node.add_response("n", heimlich_node)
     heimlich_node.add_response("y", breathing_node)
