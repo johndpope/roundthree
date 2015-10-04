@@ -4,7 +4,7 @@ class Node:
         self.message = message
         self.responses = {}
 
-    def add_response(input, new_node):
+    def add_response(self, input, new_node):
         self.responses[input] = new_node
 
     def get_message():
