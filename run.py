@@ -6,12 +6,13 @@ import time
  
 app = Flask(__name__)
 start_node = None
+vitals_introduction_node = None
 loc_node = None
 hr_node = None
 rr_node = None
 pupil_node = None
 skin_node = None
-vitals_nodes = [loc_node, hr_node, rr_node, pupil_node, skin_node]
+vitals_nodes = [vitals_introduction_node, loc_node, hr_node, rr_node, pupil_node, skin_node]
 curr_nodes = {}
 
 
@@ -23,7 +24,7 @@ def hello_monkey():
     resp = twilio.twiml.Response()
     if (request.form['From'] in curr_nodes):
         answer = request.form['Body'].lower()
-        if (answer in ["y", "n", "1", "2", "3", "4", "5"]):
+        if (answer in ["y", "n"]):
             if(not curr_nodes[request.form['From']].is_end_node()):
                 curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node(answer)
         if (curr_nodes[request.form['From']] in vitals_nodes):
