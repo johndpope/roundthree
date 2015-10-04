@@ -11,7 +11,7 @@ hr_node = None
 rr_node = None
 pupil_node = None
 skin_node = None
-vitals_nodes = [loc_node, hr_node, rr_node, pupil_node, skin_node]
+vitals_nodes = []
 curr_nodes = {}
 
 
@@ -94,5 +94,6 @@ if __name__ == "__main__":
     vitals_purgatory_node.add_response("y", loc_node)
     vitals_purgatory_node.add_response("n", wait_node)
     wait_node.set_is_end_node(True)
+    vitals_nodes = [loc_node, hr_node, rr_node, pupil_node, skin_node]
 
     app.run(debug=True, host='0.0.0.0')
