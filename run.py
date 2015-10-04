@@ -6,13 +6,12 @@ import time
  
 app = Flask(__name__)
 start_node = None
-vitals_introduction_node = None
 loc_node = None
 hr_node = None
 rr_node = None
 pupil_node = None
 skin_node = None
-vitals_nodes = [vitals_introduction_node, loc_node, hr_node, rr_node, pupil_node, skin_node]
+vitals_nodes = [loc_node, hr_node, rr_node, pupil_node, skin_node]
 curr_nodes = {}
 
 
@@ -27,7 +26,7 @@ def hello_monkey():
         if (answer in ["y", "n"]):
             if(not curr_nodes[request.form['From']].is_end_node()):
                 curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node(answer)
-        if (curr_nodes[request.form['From']] in vitals_nodes):
+        elif (curr_nodes[request.form['From']] in vitals_nodes):
             curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node("next")
     else:
         curr_nodes[request.form['From']] = start_node
