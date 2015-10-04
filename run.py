@@ -56,7 +56,7 @@ if __name__ == "__main__":
     dense_bleed_node = Node("Does your patient have a dense bleed? Check for large pools of blood. (y/n)")
     stop_bleed_node = Node("Apply pressure to the wound with a bulky dressing.")
     vitals_introduction_node = Node("Do you wish to take a set of vitals (recommended)? (y/n)")
-    wait_node = Node("Wait for emergency medical services to arrive.")
+    wait_node = Node("Please wait for emergency medical services to arrive. Thank you for using Cavalry!")
 
     # vitals_instructions_node = Node("Select the vital you wish to input.\n1 Level of Consciousness\n2 Heart Rate\n3 Respitory Rate\n4 Pupil Dilation\n5 Skin Condition")
     loc_node = Node("Which best describes your patient?\nAO4 A+Ox4\nV Responsive to Verbal Input\nP Responsive to Painful Stimulus\nU Unresponsive")
