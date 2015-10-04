@@ -5,7 +5,7 @@ from Node import Node
 app = Flask(__name__)
 start_node = None
 air_node = None
-curr_nodes = {}
+curr_node = {}
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -13,7 +13,7 @@ def hello_monkey():
     """Respond to incoming calls with a simple text message."""
     global curr_node
     resp = twilio.twiml.Response()
-    if (curr_node[request.form['From']] != None):
+    if (request.form['From'] in curr_node):
         answer = request.form['Body'].lower()
         print(answer)
         if ("y" in answer or "n" in answer):
