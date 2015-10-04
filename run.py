@@ -19,6 +19,7 @@ curr_nodes = {}
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
     """Respond to incoming calls with a simple text message."""
+    global vitals_nodes
     global curr_nodes
     resp = twilio.twiml.Response()
     if (request.form['From'] in curr_nodes):
