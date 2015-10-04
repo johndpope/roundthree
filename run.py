@@ -13,8 +13,8 @@ def hello_monkey():
     """Respond to incoming calls with a simple text message."""
     global curr_node
     resp = twilio.twiml.Response()
-    if (curr_node != None:
-        answer = request.form['Body'].lower
+    if (curr_node != None):
+        answer = request.form['Body'].lower()
         print(answer)
         if ("y" in answer or "n" in answer):
             curr_node = curr_node.get_next_node(answer)
