@@ -76,8 +76,8 @@ if __name__ == "__main__":
     dense_bleed_node.add_response("y", stop_bleed_node)
     dense_bleed_node.add_response("n", vitals_introduction_node)
     stop_bleed_node.set_is_end_node(True)
-    vitals_introduction_node("y", loc_node)
-    vitals_introduction_node("n", wait_node)
+    vitals_introduction_node.add_response("y", loc_node)
+    vitals_introduction_node.add_response("n", wait_node)
 
     loc_node.add_response("next", hr_node)
     hr_node.add_response("next", rr_node)
