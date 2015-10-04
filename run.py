@@ -9,11 +9,11 @@ curr_node = None
 
 
 @app.route("/", methods=['GET', 'POST'])
-def hello_monkey():
+def hello_monkey(request):
     """Respond to incoming calls with a simple text message."""
     global curr_node
     resp = twilio.twiml.Response()
-    print(resp.body)
+    print(request)
     if (curr_node != start_node):
         curr_node = curr_node.get_next_node()
     resp.message(curr_node.get_message())
