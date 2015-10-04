@@ -16,7 +16,7 @@ def hello_monkey():
     if (request.form['From'] in curr_node):
         answer = request.form['Body'].lower()
         print(answer)
-        if ("y" in answer or "n" in answer):
+        if ("y" is answer or "n" is answer):
             curr_node[request.form['From']] = curr_node[request.form['From']].get_next_node(answer)
     else:
         curr_node[request.form['From']] = start_node
