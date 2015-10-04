@@ -23,11 +23,11 @@ def hello_monkey():
     resp = twilio.twiml.Response()
     if (request.form['From'] in curr_nodes):
         answer = request.form['Body'].lower()
+        print(curr_nodes[request.form['From']])
+        print(loc_node)
         if (answer in ["y", "n"]):
             if(not curr_nodes[request.form['From']].is_end_node()):
                 curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node(answer)
-            print(curr_nodes[request.form['From']])
-            print(loc_node)
         elif (curr_nodes[request.form['From']] in vitals_nodes):
             print(curr_nodes[request.form['From']].get_message())
             curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node("next")
