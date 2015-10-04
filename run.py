@@ -15,7 +15,8 @@ def hello_monkey():
     resp = twilio.twiml.Response()
     if (curr_node != start_node):
         answer = request.form['Body'].lower
-        if (answer == "y" or answer == "n"):
+        print(answer)
+        if ("y" in answer or "n" in answer):
             curr_node = curr_node.get_next_node(answer)
     resp.message(curr_node.get_message())
 
