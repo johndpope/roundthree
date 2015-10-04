@@ -5,7 +5,7 @@ from Node import Node
 app = Flask(__name__)
 start_node = None
 air_node = None
-curr_node = None
+curr_nodes = {}
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -13,14 +13,14 @@ def hello_monkey():
     """Respond to incoming calls with a simple text message."""
     global curr_node
     resp = twilio.twiml.Response()
-    if (curr_node != None):
+    if (curr_node[request.form['From']] != None):
         answer = request.form['Body'].lower()
         print(answer)
         if ("y" in answer or "n" in answer):
-            curr_node = curr_node.get_next_node(answer)
+            curr_node[request.form['From']] = curr_node[request.form['From']].get_next_node(answer)
     else:
-        curr_node = start_node
-    resp.message(curr_node.get_message())
+        curr_node[request.form['From']] = start_node
+    resp.message(curr_node[request.form['From']].get_message())
 
     return str(resp)
  
@@ -45,5 +45,6 @@ if __name__ == "__main__":
     breathing_node.add_response("y", circulation_node)
     breathing_node.add_response("n", mtm_node)
     circulation_node.add_response("y", dense_bleed_node)
-    # curr_node = start_node
+    circulation_node.add_response("n", cpr_node)
+
     app.run(debug=True, host='0.0.0.0')
