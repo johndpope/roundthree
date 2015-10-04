@@ -13,6 +13,7 @@ def hello_monkey():
     """Respond to incoming calls with a simple text message."""
     global curr_node
     resp = twilio.twiml.Response()
+    print(resp)
     if (curr_node != start_node):
         curr_node = curr_node.get_next_node()
     resp.message(curr_node.get_message())
@@ -21,7 +22,7 @@ def hello_monkey():
  
 if __name__ == "__main__":
 
-    start_node = Node("Welcome to #thecloud. If you have not done so already, please call emergency services. Are you safe and able to assist? (y/n)")
+    start_node = Node("Welcome to Calvary. If you have not done so already, please call emergency services. Are you safe and able to assist? (y/n)")
     air_node = Node("Look in your patient's mouth. Are there any obstructions? If there are, remove it if possible. Is the airway now open? (y/n)")
     heimlich_node = Node("Perform the Heimlich maneuver: Get behind your patient. Place your fist with your thumb in and facing their belly button. Grasping your fist with your other hand, make quick, upward and inward thrusts with your fist.")
     breathing_node = Node("Is your patient breathing? (y/n)")
