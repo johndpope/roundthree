@@ -29,7 +29,8 @@ def hello_monkey():
             curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node("next")
     else:
         curr_nodes[request.form['From']] = start_node
-        start time = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
+        start_time = datetime.datetime.fromtimestamp(ts).strftime('%d/%m/%Y %H:%M:%S')
+        print(start_time)
     resp.message(curr_nodes[request.form['From']].get_message())
 
     return str(resp)
