@@ -7,10 +7,10 @@ class Node:
     def add_response(self, input, new_node):
         self.responses[input] = new_node
 
-    def get_message():
+    def get_message(self):
         return self.message
 
-    def get_next_node(input):
+    def get_next_node(self, input):
         if (self.responses):
             return self.responses[input]
         else:
