@@ -26,8 +26,10 @@ def hello_monkey():
         if (answer in ["y", "n"]):
             if(not curr_nodes[request.form['From']].is_end_node()):
                 curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node(answer)
+            print(curr_nodes[request.form['From']])
+            print(loc_node)
         elif (curr_nodes[request.form['From']] in vitals_nodes):
-            print("here")
+            print(curr_nodes[request.form['From']].get_message())
             curr_nodes[request.form['From']] = curr_nodes[request.form['From']].get_next_node("next")
     else:
         curr_nodes[request.form['From']] = start_node
