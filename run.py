@@ -9,7 +9,7 @@ curr_node = None
 
 
 @app.route("/", methods=['GET', 'POST'])
-def hello_monkey(request):
+def hello_monkey():
     """Respond to incoming calls with a simple text message."""
     global curr_node
     resp = twilio.twiml.Response()
